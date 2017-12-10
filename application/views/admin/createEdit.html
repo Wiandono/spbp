@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>SB Admin - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="dashboard.html">SPBP</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="dashboard.html">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-server"></i>
+            <span class="nav-link-text">User & Book</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="user.html">User</a>
+            </li>
+            <li>
+              <a href="books.html">Book</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-shopping-cart"></i>
+            <span class="nav-link-text">Transaction</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="peminjaman.html">Peminjaman</a>
+            </li>
+            <li>
+              <a href="pengembalian.html">Pengembalian</a>
+            </li>
+            <li>
+              <a href="donasi.html">Donasi</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Tambah Buku</li>
+      </ol>
+      <div class="row">
+        <div class="col-12">
+          <form>
+            <div class="form-group row">
+              <label for="cover" class="col-sm-2 col-form-label offset-sm-1">Foto Cover</label>
+              <div class="col-sm-8">
+                <input type="file" id="cover">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="judulBuku" class="col-sm-2 col-form-label offset-sm-1">Judul Buku</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="judulBuku" placeholder="Harry Potter">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="isbn" class="col-sm-2 col-form-label offset-sm-1">ISBN</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" id="isbn" placeholder="978-602-5406-16-4">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="kategori" class="col-sm-2 col-form-label offset-sm-1">Kategori</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="kategori" placeholder="Kuliner">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="bahasa" class="col-sm-2 col-form-label offset-sm-1">Bahasa</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="bahasa" placeholder="Indonesia">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="penulis" class="col-sm-2 col-form-label offset-sm-1">Penulis</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="penulis" placeholder="Shah Rukh Khan">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="penerbit" class="col-sm-2 col-form-label offset-sm-1">Penerbit</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="penerbit" placeholder="Gramedia">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tanggalTerbit" class="col-sm-2 col-form-label offset-sm-1">Tanggal Terbit</label>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" id="tanggalTerbit">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="halaman" class="col-sm-2 col-form-label offset-sm-1">Jumlah Halaman</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="halaman" placeholder="745">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="deskripsi" class="col-sm-2 col-form-label offset-sm-1">Deskripsi</label>
+              <div class="col-sm-8">
+                <textarea class="form-control" id="deskripsi" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="stock" class="col-sm-2 col-form-label offset-sm-1">Stok</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" id="stock" placeholder="12">
+              </div>
+            </div>
+            <div class="form-group row justify-content-center">
+              <button class="btn btn-primary mr-3" >Simpan</button>
+              <button class="btn btn-primary">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Alexandria 2017</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+  </div>
+</body>
+
+</html>
