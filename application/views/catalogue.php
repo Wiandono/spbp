@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -195,90 +198,111 @@
 
     <?php echo form_close(); ?>
 
+    <?php 
+        echo form_open_multipart('control_user/donate');
+
+        if(isset($donateSuccess)) {
+            if ($donateSuccess == false) {
+                echo "
+                    <script>
+                        alert('". $error_message . str_replace(array("\r", "\n"), '\n', strip_tags(validation_errors())) ."');
+                    </script>
+                ";
+            } else {
+                echo "
+                    <script>
+                        alert('Terimakasih atas kontribusi yang anda berikan, harap tunggu konfirmasi kami selanjutnya');
+                    </script>
+                ";
+            }
+        }
+    ?>
+
     <div class="modal fade" id="modalDonateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header text-center">
-					<h4 class="modal-title w-100 font-bold">Donate</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body mx-3">
-					<div class="row">
-						<div class="col md-form">
-							<i class="fa fa-user prefix grey-text"></i>
-							<input type="text" id="defaultForm-usename" class="form-control" placeholder="Username">
-						</div>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-bold">Donate</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="row">
+                        <div class="col md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input id="defaultForm-username" class="form-control" name="username" type="text" placeholder="Username" disabled value="<?php echo $_SESSION['logged_in'] ?>">
+                        </div>
 
-						<div class="col md-form">
-							<i class="fa fa-book prefix grey-text"></i>
-							<input type="text" id="defaultForm-title" class="form-control" placeholder="Book Title">
-						</div>
-					</div>
+                        <div class="col md-form">
+                            <i class="fa fa-book prefix grey-text"></i>
+                            <input id="defaultForm-title" class="form-control" name="title" type="text" placeholder="Book Title">
+                        </div>
+                    </div>
 
-					<div class="row">
-						<div class="col md-form">
-							<i class="fas fa-bookmark prefix grey-text"></i>
-							<input type="number" id="defaultForm-isbn" class="form-control" placeholder="ISBN">
-						</div>
+                    <div class="row">
+                        <div class="col md-form">
+                            <i class="fas fa-bookmark prefix grey-text"></i>
+                            <input id="defaultForm-isbn" class="form-control" name="isbn" type="number" placeholder="ISBN">
+                        </div>
 
-						<div class="col md-form">
-							<i class="fas fa-list-ul prefix grey-text"></i>
-							<input type="text" id="defaultForm-category" class="form-control" placeholder="Category">
-						</div>
-					</div>
+                        <div class="col md-form">
+                            <i class="fas fa-list-ul prefix grey-text"></i>
+                            <input id="defaultForm-category" class="form-control" name="category" type="text" placeholder="Category">
+                        </div>
+                    </div>
 
-					<div class="row">
-						<div class="col md-form">
-							<i class="fa fa-language prefix grey-text"></i>
-							<input type="text" id="defaultForm-language" class="form-control" placeholder="Language">
-						</div>
+                    <div class="row">
+                        <div class="col md-form">
+                            <i class="fa fa-language prefix grey-text"></i>
+                            <input id="defaultForm-language" class="form-control" name="language" type="text" placeholder="Language">
+                        </div>
 
-						<div class="col md-form">
-							<i class="fa fa-pencil prefix grey-text"></i>
-							<input type="text" id="defaultForm-penulis" class="form-control" placeholder="Author">
-						</div>
-					</div>
+                        <div class="col md-form">
+                            <i class="fa fa-pencil prefix grey-text"></i>
+                            <input id="defaultForm-penulis" class="form-control" name="penulis" type="text" placeholder="Author">
+                        </div>
+                    </div>
 
-					<div class="row">
-						<div class="col md-form">
-							<i class="fa fa-paper-plane prefix grey-text"></i>
-							<input type="text" id="defaultForm-penerbit" class="form-control" placeholder="Publisher">
-						</div>
+                    <div class="row">
+                        <div class="col md-form">
+                            <i class="fa fa-paper-plane prefix grey-text"></i>
+                            <input id="defaultForm-penerbit" class="form-control" name="penerbit" type="text" placeholder="Publisher">
+                        </div>
 
-						<div class="col md-form">
-							<i class="fas fa-calendar prefix grey-text"></i>
-							<input type="date" id="defaultForm-tanggal" class="form-control">
-						</div>
-					</div>
+                        <div class="col md-form">
+                            <i class="fas fa-calendar prefix grey-text"></i>
+                            <input id="defaultForm-tanggal" class="form-control" name="tanggal" type="text" placeholder="YYYY-MM-DD">
+                        </div>
+                    </div>
 
-					<div class="row">
-						<div class="col md-form">
-							<i class="fa fa-list-ol prefix grey-text"></i>
-							<input type="number" id="defaultForm-halaman" class="form-control" placeholder="Total Pages">
-						</div>
+                    <div class="row">
+                        <div class="col md-form">
+                            <i class="fa fa-list-ol prefix grey-text"></i>
+                            <input id="defaultForm-halaman" class="form-control" name="halaman" type="number" placeholder="Total Pages">
+                        </div>
 
-						<div class="col md-form">
-							<i class="fa fa-bars prefix grey-text"></i>
-							<input type="text" id="defaultForm-deskripsi" class="form-control" placeholder="Description"></input>
-						</div>
-					</div>
+                        <div class="col md-form">
+                            <i class="fa fa-bars prefix grey-text"></i>
+                            <input id="defaultForm-deskripsi" class="form-control" name="deskripsi" type="text" placeholder="Description"></input>
+                        </div>
+                    </div>
 
-					<div class="md-form">
-						<i class="fas fa-images prefix grey-text"></i>
-						<input type="file">
-					</div>
+                    <div class="md-form">
+                        <i class="fas fa-images prefix grey-text"></i>
+                        <input name="file" type="file">
+                    </div>
 
                 </div>
-                
-				<div class="modal-footer d-flex justify-content-center">
-					<button class="btn btn-elegant">Submit</button>
-					<button class="btn btn-elegant" data-dismiss="modal" aria-label="Close">Cancel</button>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <input class="btn btn-elegant" type="submit" value="Submit" name="submit"/>
+                    <button class="btn btn-elegant" data-dismiss="modal" aria-label="Close">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php echo form_close(); ?>
 
     <main>
         <!--Main layout-->

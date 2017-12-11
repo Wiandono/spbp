@@ -50,6 +50,7 @@ Class Model_User extends CI_Model {
 
         if ($data['filter'] == "all") {
 
+            $this->db->where('stock !=', 0);
             $query = $this->db->get('book');
 
             if ($query->num_rows() > 0) {
@@ -139,7 +140,7 @@ Class Model_User extends CI_Model {
 
     public function createTransaction($data) {
 
-        $query = $this->db->get_where('transaction', array('username' => $data['username'], 'isbn' => $data['isbn'], 'type' => $data['type']), 1);
+        $query = $this->db->get_where('transaction', array('username' => $data['username'], 'isbn' => $data['isbn'], 'type' => $data['type'], 'verified' => 0), 1);
 
         if ($query->num_rows() == 1) {
             return false;
@@ -157,20 +158,52 @@ Class Model_User extends CI_Model {
                 $update;
 
                 if ($data['type'] == "Peminjaman") {
+
                     $update['stock'] = $stock - 1;
-                } else {
+                    $this->db->where('isbn', $data['isbn']);
+                    $this->db->update('book', $update);
+
+                } else if ($data['type'] == "Pengembalian") {
+
                     $update['stock'] = $stock + 1;
+                    $this->db->where('isbn', $data['isbn']);
+                    $this->db->update('book', $update);
+
                 }
 
-                $this->db->where('isbn', $data['isbn']);
-                $this->db->update('book', $update);
-
                 return true;
+
             } else {
                 return false;
             }
         }
     }
-}
 
+    public function createBook($data) {
+
+        $query = $this->db->get_where('book', array('isbn' => $data['isbn']), 1);
+
+        if ($query->num_rows() == 1) {
+
+            $this->db->select('stock');
+            $query = $this->db->get('book');
+
+            $row = $query->row();
+            $stock = $row->stock;
+
+            $update['stock'] = $stock + 1;
+            $this->db->where('isbn', $data['isbn']);
+            $this->db->update('book', $update);
+
+            return true;
+
+        } else {
+
+            $this->db->insert('book', $data);
+            
+            return true;
+
+        }
+    }
+}
 ?>
