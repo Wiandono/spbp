@@ -276,5 +276,9 @@ class Control_Admin extends CI_Controller {
 
         }
     }
+
+    public function verifyTransaction($id) {
+
+    }
 }
 ?>
